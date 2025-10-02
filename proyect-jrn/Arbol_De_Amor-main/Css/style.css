@@ -40,18 +40,16 @@ body {
     transition: opacity 0.5s;
 }
 
-/* === Contenedor del Árbol === */
 .tree-container {
-  width: 520px;
-  height: 520px;
-  max-width: 95vw;
-  max-height: 95vw;
+  /* Asegura que el contenedor tenga el nuevo tamaño */
+  width: 520px !important;
+  height: 520px !important;
+  /* Centrado absoluto */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  overflow: hidden; /* mantiene el árbol adentro */
 }
 
 .tree-container svg {
@@ -66,10 +64,9 @@ body {
 
 .tree-container svg.move-and-scale {
   transition: transform 1.2s cubic-bezier(.77,0,.18,1);
-  transform: scale(1.2); /* centrado y escalado */
+  transform: translateX(200px) scale(1.35);
 }
 
-/* === Texto de dedicatoria === */
 .dedication-text {
   position: absolute;
   top: 50%;
@@ -88,10 +85,11 @@ body {
   pointer-events: none;
   max-height: 90vh;
   overflow: visible;
-  padding: 1em 1.5em;
+  padding: 1em 1.5em 1em 1em;
   background: rgba(255,255,255,0.92);
   border-radius: 0.7em;
   box-shadow: 0 2px 16px #e6002611;
+  /* Permite que la caja crezca en altura y ancho */
   transition: max-width 0.4s, min-width 0.4s, width 0.4s;
 }
 
@@ -123,10 +121,14 @@ body {
   border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
 }
 
-/* === Firma === */
 .signature {
+  /* Cambia posición absoluta a relativa y pon margen arriba */
   position: relative;
+  top: auto;
+  left: auto;
+  bottom: auto;
   margin-top: 1.5em;
+  margin-left: 0;
   display: block;
   font-family: 'Dancing Script', 'Pacifico', cursive, sans-serif;
   font-size: 2.2rem;
@@ -148,7 +150,6 @@ body {
   to   { clip-path: inset(0 0 0 0); }
 }
 
-/* === Countdown === */
 .countdown {
   position: fixed;
   left: 50%;
@@ -176,14 +177,8 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* === Responsivo móvil === */
+/* Responsivo para móviles: la caja ocupa casi todo el ancho arriba del árbol */
 @media (max-width: 700px) {
-  .tree-container {
-    width: 92vw !important;
-    height: 92vw !important;
-    max-width: 95vw;
-    max-height: 95vw;
-  }
   .dedication-text {
     left: 50%;
     right: auto;
@@ -193,7 +188,7 @@ body {
     max-width: 95vw;
     width: 95vw;
     font-size: 1.1rem;
-    padding: 0.7em;
+    padding: 0.7em 0.7em 0.7em 0.7em;
   }
   .signature {
     font-size: 1.3rem;
